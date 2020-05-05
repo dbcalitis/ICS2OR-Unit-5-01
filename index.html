@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta name="description" content="Javascript">
+    <meta name="keywords" content="Javascript, HTML, Crossover">
+    <meta name="author" content="Daria Bernice Calitis">
+    <meta name="viewport"content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+  </head>
+  <body>
+    <h1>Number Guessing Game</h1>
+    <img src="./images/guessing.jpg">
+    <p id="description">Try to guess the mystery number around 1-6 with 3 tries!</p>
+    <p id="amountGuess">Guesses: 3</p>
+    <button id="button">Start</button>
+    <input type="text" id="guessnumber"/>
+    <button id="button2">Submit</button>
+    <button id="button3">Reset</button>
+    <script>
+      let randomNumber;
+      let guessNumber;
+      let guesses;
+      let currentNumber;
+      guesses = 3;
+      document.getElementById("button").addEventListener("click", startGame);
+      document.getElementById("button").addEventListener("click", setNumber)
+      document.getElementById("button2").addEventListener("click", getNumber);
+      document.getElementById("button3").addEventListener("click", resetGame);
+      document.getElementById("button3").addEventListener("click", setNumber);
+
+      // This function is self-explanatory, it shows the "Submit" button and the text box.
+      function startGame() {
+        document.getElementById("button2").style.display = "block";
+        document.getElementById("guessnumber").style.display = "block";
+        document.getElementById("button").style.display = "none";
+      }
+      // It sets the mystery number for the round.
+      function setNumber() {
+        randomNumber = Math.floor(Math.random() * (6 - 1 + 1) ) + 1;
+        currentNumber = randomNumber;
+        console.log("The number is now " + currentNumber)
+      }
+      // This checks whether the player guesses the number correctly or not. Also, it can end the game once your guesses run out
+      function getNumber() {
+        guessNumber = parseInt(document.getElementById("guessnumber").value, 10);
+        if (guessNumber == currentNumber) {
+          document.getElementById("description").textContent = "You won!";
+          document.getElementById("button2").style.display = "none";
+          document.getElementById("guessnumber").style.display = "none";
+          document.getElementById("button3").style.display = "block";
+          guesses--;
+          document.getElementById("amountGuess").textContent = "Guesses: " + guesses;
+        }
+        else if (guesses == 1) {
+          document.getElementById("description").textContent = "Game Over!";
+          document.getElementById("button2").style.display = "none";
+          document.getElementById("button3").style.display = "block";
+          document.getElementById("amountGuess").textContent = "Guesses: 0";
+        }
+        else {
+          document.getElementById("description").textContent = "Try Again.";
+          guesses--;
+          document.getElementById("amountGuess").textContent = "Guesses: " + guesses;
+        }
+      }
+      // As in the name, it starts another round of the game.
+      function resetGame() {
+        guesses = 3;
+        document.getElementById("button2").style.display = "block";
+        document.getElementById("guessnumber").style.display = "block";
+        document.getElementById("button3").style.display = "none";
+        document.getElementById("amountGuess").textContent = "Guesses: " + guesses;
+        document.getElementById("description").textContent = "Try to guess the mystery number around 1-6 with 3 tries!";
+      }
+    </script>
+  </body>
+</html>
