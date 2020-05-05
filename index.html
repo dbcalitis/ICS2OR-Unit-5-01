@@ -13,9 +13,9 @@
     <h1>Number Guessing Game</h1>
     <img src="./images/guessing.jpg">
     <p id="description">Try to guess the mystery number around 1-6 with 3 tries!</p>
-    <p id="amountGuess">Guesses: 3</p>
+    <p id="amountguess">Guesses: 3</p>
     <button id="button">Start</button>
-    <input type="text" id="guessnumber"/>
+    <input type="text" id="guessnumber">
     <button id="button2">Submit</button>
     <button id="button3">Reset</button>
     <script>
@@ -25,7 +25,7 @@
       let currentNumber;
       guesses = 3;
       document.getElementById("button").addEventListener("click", startGame);
-      document.getElementById("button").addEventListener("click", setNumber)
+      document.getElementById("button").addEventListener("click", setNumber);
       document.getElementById("button2").addEventListener("click", getNumber);
       document.getElementById("button3").addEventListener("click", resetGame);
       document.getElementById("button3").addEventListener("click", setNumber);
@@ -40,7 +40,7 @@
       function setNumber() {
         randomNumber = Math.floor(Math.random() * (6 - 1 + 1) ) + 1;
         currentNumber = randomNumber;
-        console.log("The number is now " + currentNumber)
+        console.log("The number is now " + currentNumber);
       }
       // This checks whether the player guesses the number correctly or not. Also, it can end the game once your guesses run out
       function getNumber() {
@@ -51,13 +51,13 @@
           document.getElementById("guessnumber").style.display = "none";
           document.getElementById("button3").style.display = "block";
           guesses--;
-          document.getElementById("amountGuess").textContent = "Guesses: " + guesses;
+          document.getElementById("amountguess").textContent = "Guesses: " + guesses;
         }
         else if (guesses == 1) {
           document.getElementById("description").textContent = "Game Over!";
           document.getElementById("button2").style.display = "none";
           document.getElementById("button3").style.display = "block";
-          document.getElementById("amountGuess").textContent = "Guesses: 0";
+          document.getElementById("amountguess").textContent = "Guesses: 0";
         }
         else {
           document.getElementById("description").textContent = "Try Again.";
@@ -71,7 +71,7 @@
         document.getElementById("button2").style.display = "block";
         document.getElementById("guessnumber").style.display = "block";
         document.getElementById("button3").style.display = "none";
-        document.getElementById("amountGuess").textContent = "Guesses: " + guesses;
+        document.getElementById("amountguess").textContent = "Guesses: " + guesses;
         document.getElementById("description").textContent = "Try to guess the mystery number around 1-6 with 3 tries!";
       }
     </script>
